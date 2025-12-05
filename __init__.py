@@ -4,8 +4,19 @@ from aiohttp import web
 import folder_paths
 import nodes
 
-NODE_CLASS_MAPPINGS = {}
-__all__ = ["NODE_CLASS_MAPPINGS"]
+# Import custom nodes
+from .image_batch_multi import ImageBatchMulti
+
+# Register V3 nodes using their schema node_id
+NODE_CLASS_MAPPINGS = {
+    "ImageBatchMulti": ImageBatchMulti,
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "ImageBatchMulti": "Batch Images (Multi)",
+}
+
+__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
 
 # Define the path to our extension
 workspace_path = os.path.dirname(__file__)
