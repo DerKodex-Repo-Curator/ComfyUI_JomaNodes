@@ -7,6 +7,9 @@ import nodes as comfy_nodes
 # Import custom nodes
 from .nodes import ImageBatchMulti
 
+# Import API routes - this registers them with the server
+from .api import routes as api_routes  # noqa: F401
+
 # Register V3 nodes using their schema node_id
 NODE_CLASS_MAPPINGS = {
     "ImageBatchMulti": ImageBatchMulti,
@@ -16,6 +19,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ImageBatchMulti": "Batch Images (Multi)",
 }
 
+WEB_DIRECTORY = "./js"
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
 
 # Define the path to our extension

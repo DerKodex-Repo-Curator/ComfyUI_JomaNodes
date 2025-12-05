@@ -1,12 +1,16 @@
 """
-ImageBatchMulti - A dynamic input version of ImageBatch.
+JomaNodes - Custom nodes for ComfyUI.
 
-This node allows batching multiple images with a dynamically growing number of inputs.
-When you connect an image to an input, a new input slot automatically appears.
+Includes:
+- ImageBatchMulti: Dynamic input image batching
+- ListInputContents: List files and directories from input folder
 """
 
+import os
+import json
 import torch
 import comfy.utils
+import folder_paths
 from comfy_api.latest import io
 from comfy_api.latest import _io
 
@@ -110,4 +114,5 @@ class ImageBatchMulti(io.ComfyNode):
         
         # Concatenate along batch dimension
         return torch.cat((image1, image2), dim=0)
+
 
